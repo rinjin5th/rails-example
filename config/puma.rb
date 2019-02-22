@@ -15,12 +15,12 @@ threads threads_count, threads_count
 #
 environment ENV.fetch("RAILS_ENV") { "development" }
 
-_app_path = "#{File.expand_path("../..", __FILE__)}"
-_app_name = File.basename(_app_path)
-_home = ENV.fetch("HOME") { "/home/ubuntu" }
-pidfile "/opt/sample-app/tmp/puma.pid"
-bind "unix:///opt/sample-app/tmp/puma.sock"
-directory _app_path
+app_dir = File.expand_path("../..", __FILE__)
+tmp_dir = "#{app_dir}/tmp"
+
+pidfile "#{tmp_dir}/puma.pid"
+bind "unix://#{tmp_dir}/puma.sock"
+directory app_dir
 
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked webserver processes. If using threads and workers together
