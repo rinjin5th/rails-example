@@ -14,7 +14,6 @@ threads threads_count, threads_count
 # Specifies the `environment` that Puma will run in.
 #
 environment ENV.fetch("RAILS_ENV") { "development" }
-daemonize true
 
 app_dir = File.expand_path("../..", __FILE__)
 tmp_dir = "#{app_dir}/tmp"
